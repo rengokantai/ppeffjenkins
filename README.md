@@ -1,4 +1,15 @@
-# ppeffjenkins
+# ppeffjenkins 
+
+### Artifacts and Fingerprint
+```
+stage('Build'){
+  steps{
+    sh 'mvn clean package'
+    junit '**/target/surfire-reports/TEST-*.xml'
+    archiveArtifacts artifact 'target/*.jar', fingerprint:true
+  }
+}
+```
 
 ### Deloying Our Java Web Project
 ```
